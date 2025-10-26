@@ -1,145 +1,133 @@
-/*------------------------------------
-   PS4 CUSTOM SKIN - Gamepad Viewer
-------------------------------------*/
+/* ===============================
+   Réglages rapides (offsets)
+   Mets des valeurs +/− en px.
+   Exemple: --abxy-dx: -10px;
+==================================*/
+.controller.ds4{
+  --abxy-dx: 0px;   --abxy-dy: 0px;    /* Triangle/Carré/Rond/Croix */
+  --dpad-dx: 0px;   --dpad-dy: 0px;    /* Croix directionnelle */
+  --sticks-dx: 0px; --sticks-dy: 0px;  /* Groupe des deux sticks */
+  --touch-dx: 0px;  --touch-dy: 0px;   /* Touchpad press */
+  --meta-dx: 0px;   --meta-dy: 0px;    /* Bouton PS */
+  --arrows-dx:0px;  --arrows-dy:0px;   /* Share/Options */
+  --trig-dx: 0px;   --trig-dy: 0px;    /* L2/R2 */
+  --bump-dx: 0px;   --bump-dy: 0px;    /* L1/R1 */
+}
 
-/* Base controller */
-.controller.ds4 {
+/* Base controller (inchangé sauf scale) */
+.controller.ds4{
   position: relative !important;
   width: 1200px !important;
   height: 700px !important;
   background: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Black_SkinNo_Buttons.png) no-repeat center !important;
   background-size: 100% 100% !important;
-  transform: scale(0.5) !important;         /* ajuste le zoom ici */
+  transform: scale(0.5) !important;
   transform-origin: top left !important;
 }
+#controller0, .gamepad, .controller { overflow: visible !important; }
 
-/* Empêche le clipping du conteneur Gamepad Viewer */
-#controller0, .gamepad, .controller {
-  overflow: visible !important;
+/* --- Triggers --- */
+.ds4 .triggers{
+  position:absolute; left:299px; top:38px; width:598px; height:90px;
+  transform: translate(var(--trig-dx), var(--trig-dy));
 }
+.ds4 .trigger{
+  width:99px; height:100%;
+  background:url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Trigger_Pressed.png) no-repeat 0 0 !important;
+  opacity:0;
+}
+.ds4 .trigger.right{ background-position-x:99px; }
+.ds4 .trigger.pressed{ opacity:1; }
 
-/*------------------------------------
-   Triggers (L2 / R2)
-------------------------------------*/
-.ds4 .triggers {
-  position: absolute; left: 299px; top: 38px;
-  width: 598px; height: 90px;
+/* --- Bumpers --- */
+.ds4 .bumpers{
+  position:absolute; left:263px; top:132px; width:672px; height:23px;
+  transform: translate(var(--bump-dx), var(--bump-dy));
 }
-.ds4 .trigger {
-  width: 99px; height: 100%;
-  background: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Trigger_Pressed.png) no-repeat 0 0 !important;
-  opacity: 0;
+.ds4 .bumper{
+  width:200px; height:45px;
+  background:url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Bumper.png) no-repeat 0 0 !important;
+  opacity:0;
 }
-.ds4 .trigger.right { background-position-x: 99px; }
-.ds4 .trigger.pressed { opacity: 1; }
+.ds4 .bumper.pressed{ opacity:.8; }
+.ds4 .bumper.right{ transform: rotateY(180deg); }
 
-/*------------------------------------
-   Bumpers (L1 / R1)
-------------------------------------*/
-.ds4 .bumpers {
-  position: absolute; left: 263px; top: 132px;
-  width: 672px; height: 23px;
+/* --- Touchpad --- */
+.ds4 .touchpad{
+  position:absolute; left:422px; top:74px; width:350px; height:300px;
+  transform: translate(var(--touch-dx), var(--touch-dy));
 }
-.ds4 .bumper {
-  width: 200px; height: 45px;
-  background: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Bumper.png) no-repeat 0 0 !important;
-  opacity: 0;
-}
-.ds4 .bumper.pressed { opacity: 0.8; }
-.ds4 .bumper.right { transform: rotateY(180deg); }
-
-/*------------------------------------
-   Touchpad
-------------------------------------*/
-.ds4 .touchpad {
-  position: absolute; left: 422px; top: 74px;
-  width: 350px; height: 300px;
-}
-.ds4 .touchpad.pressed {
-  background: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Touchpad.png) no-repeat center !important;
+.ds4 .touchpad.pressed{
+  background:url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Touchpad.png) no-repeat center !important;
 }
 
-/*------------------------------------
-   PS Button (Home)
-------------------------------------*/
-.ds4 .meta {
-  position: absolute; left: 546px; bottom: 264px;
-  width: 100px; height: 100px;
+/* --- Bouton PS --- */
+.ds4 .meta{
+  position:absolute; left:546px; bottom:264px; width:100px; height:100px;
+  transform: translate(var(--meta-dx), var(--meta-dy));
 }
-.ds4 .meta.pressed {
-  background: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Home.png) no-repeat center !important;
+.ds4 .meta.pressed{
+  background:url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Home.png) no-repeat center !important;
 }
 
-/*------------------------------------
-   Select / Start
-------------------------------------*/
-.ds4 .arrows {
-  position: absolute; top: 142px; left: 227px;
-  width: 352px; height: 46px;
+/* --- Share / Options --- */
+.ds4 .arrows{
+  position:absolute; top:142px; left:227px; width:352px; height:46px;
+  transform: translate(var(--arrows-dx), var(--arrows-dy));
 }
-.ds4 .back, .ds4 .start {
-  width: 26px; height: 43px; opacity: 0;
-  background: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Select.png) no-repeat 0 0 !important;
+.ds4 .back, .ds4 .start{
+  width:26px; height:43px; opacity:0;
+  background:url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Select.png) no-repeat 0 0 !important;
 }
-.ds4 .back.pressed, .ds4 .start.pressed { opacity: 1; }
+.ds4 .back.pressed, .ds4 .start.pressed{ opacity:1; }
 
-/*------------------------------------
-   ABXY Buttons (Triangle, Carré, Rond, Croix)
-------------------------------------*/
-.ds4 .abxy {
-  position: absolute; top: 200px; left: 762px;
-  width: 170px; height: 171px;
+/* --- ABXY --- */
+.ds4 .abxy{
+  position:absolute; top:200px; left:762px; width:170px; height:171px;
+  transform: translate(var(--abxy-dx), var(--abxy-dy));
 }
-.ds4 .button {
-  position: absolute; width: 55px; height: 55px;
-  background: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/FaceButtons.png) no-repeat 0 0 !important;
+.ds4 .button{
+  position:absolute; width:55px; height:55px;
+  background:url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/FaceButtons.png) no-repeat 0 0 !important;
 }
-.ds4 .button.pressed { background-position-y: 55px; }
+.ds4 .button.pressed{ background-position-y:55px; }
+.ds4 .a{ background-position:0 0; bottom:0; left:58px; }
+.ds4 .b{ background-position:-57px 0; top:57px; right:-3px; }
+.ds4 .x{ background-position:-113px 0; top:57px; }
+.ds4 .y{ background-position:55px 0; left:58px; bottom:119px; }
 
-.ds4 .a { background-position: 0 0; bottom: 0; left: 58px; }
-.ds4 .b { background-position: -57px 0; top: 57px; right: -3px; }
-.ds4 .x { background-position: -113px 0; top: 57px; }
-.ds4 .y { background-position: 55px 0; left: 58px; bottom: 119px; }
-
-/*------------------------------------
-   Sticks
-------------------------------------*/
-.ds4 .sticks {
-  position: absolute; top: 348px; left: 422px;
-  width: 364px; height: 105px;
+/* --- Sticks --- */
+.ds4 .sticks{
+  position:absolute; top:348px; left:422px; width:364px; height:105px;
+  transform: translate(var(--sticks-dx), var(--sticks-dy));
 }
-.ds4 .stick {
-  position: absolute; width: 94px; height: 94px;
-  background: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Sticks.png) no-repeat 0 0 !important;
+.ds4 .stick{
+  position:absolute; width:94px; height:94px;
+  background:url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Sticks.png) no-repeat 0 0 !important;
 }
-.ds4 .stick.pressed.left  { background-position-x: -96px; }
-.ds4 .stick.pressed.right { background-position-x: -192px; }
-.ds4 .stick.left  { top: 0; left: 0; }
-.ds4 .stick.right { top: calc(100% - 105px); left: calc(100% - 105px); }
+.ds4 .stick.pressed.left{  background-position-x:-96px; }
+.ds4 .stick.pressed.right{ background-position-x:-192px; }
+.ds4 .stick.left{ top:0; left:0; }
+.ds4 .stick.right{ top:calc(100% - 105px); left:calc(100% - 105px); }
 
-/*------------------------------------
-   D-pad
-------------------------------------*/
-.ds4 .dpad {
-  position: absolute; top: 220px; left: 286px;
-  width: 125px; height: 126px;
+/* --- D-pad --- */
+.ds4 .dpad{
+  position:absolute; top:220px; left:286px; width:125px; height:126px;
+  transform: translate(var(--dpad-dx), var(--dpad-dy));
 }
-.ds4 .face {
-  position: absolute;
-  background: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Dpad.png) no-repeat 0 0 !important;
+.ds4 .face{
+  position:absolute;
+  background:url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Dpad.png) no-repeat 0 0 !important;
 }
-.ds4 .face.up, .ds4 .face.down { width: 37px; height: 52px; }
-.ds4 .face.left, .ds4 .face.right { width: 52px; height: 40px; }
+.ds4 .face.up, .ds4 .face.down{ width:37px; height:52px; }
+.ds4 .face.left, .ds4 .face.right{ width:52px; height:40px; }
+.ds4 .face.up{ left:44px; top:0; background-position:-37px 0; }
+.ds4 .face.down{ left:44px; bottom:0; background-position:0 0; }
+.ds4 .face.left{ top:45px; left:0; background-position:104px 0; }
+.ds4 .face.right{ top:45px; right:0; background-position:52px 0; }
+.ds4 .face.pressed{ background-position-y:52px; }
 
-.ds4 .face.up    { left: 44px; top: 0; background-position: -37px 0; }
-.ds4 .face.down  { left: 44px; bottom: 0; background-position: 0 0; }
-.ds4 .face.left  { top: 45px; left: 0; background-position: 104px 0; }
-.ds4 .face.right { top: 45px; right: 0; background-position: 52px 0; }
-.ds4 .face.pressed { background-position-y: 52px; }
-
-/*------------------------------------
-   White version
-------------------------------------*/
-.ds4.white .back, .ds4.white .start {
-  background-image: url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Start.png) !important;
+/* Variante blanche (optionnel) */
+.ds4.white .back, .ds4.white .start{
+  background-image:url(https://raw.githubusercontent.com/Agodul/GPV-KYKS/main/WEB/Start.png) !important;
 }
